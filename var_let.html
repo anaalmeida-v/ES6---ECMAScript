@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,25 +14,28 @@
         //enquanto variáveis declaradas com let só funcionará depois de sua declaração
         /*os únicos escopos que sofrem elevação, e tem comportamento diferente em relação a var e let,
         são os escopos de bloco*/
-        var serie = 'Friends'
 
-        function x() {
+        /*var serie = 'Friends'
 
-            var serie = 'Game Of Thrones'
-            console.log('função: ' + serie)
+        {
+            var serie = 'The Walking Dead'
+            console.log('dentro do bloco: ' + serie)
+        }//será exibido 'The Walinkg Dead'
+        console.log('fora do bloco: ' + serie)
+        */
 
-            if(true){
-                console.log('bloco da função: ' + serie)
-            }
+        let serie = 'Friends'
+
+        {
+            let serie = 'The Walking Dead'/*será exibido 'The Walinkg Dead' primeiro, pois o escopo de bloco 
+            é mais específico*/
+            console.log('dentro do bloco: ' + serie)
         }
-        x()
-
-        if(true) {
-            console.log('global: ' + serie)
-        }
+        console.log('fora do bloco: ' + serie)
     </script>
 </head>
+
 <body>
-    
 </body>
+
 </html>
