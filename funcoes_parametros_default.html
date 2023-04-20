@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+         function contarUmaHistoria(personagem = 'Fubá', atividade = 'Correr no parque', nome_dono = 'João') {
+            document.write(`Era uma vez um cachorro chamado ${personagem}, ele adorava ${atividade}, seu dono era o ${nome_dono} e eles viveram feliz para sempre`)
+         }
+         /*com o default, parâmetros não precisam ser chamados junto com a função para funcionarem, porém,
+         nada impede que sejam definidos parâmetros, para assim, os valores default tenham novos parâmetros*/
+
+         //contarUmaHistoria('Repolho', 'Enterrar Ossos', 'Pedro')//mudança de parâmetros
+
+         contarUmaHistoria(undefined, 'Enterrar Ossos', 'Pedro')
+        /*caso não precise ou não de interesse definir um novo parâmetro para um ou mais dos mesmos, é só colocar no
+        lugar do parâmetro *undefined*, isso fará que seja retornado o parâmetro default*/
+    </script>
+</head>
+<body>
+</body>
+</html>
