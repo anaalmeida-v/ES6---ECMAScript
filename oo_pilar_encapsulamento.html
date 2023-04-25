@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+
+        class Tv {
+            constructor() {
+                this._relacaoCanais = [2,4,5,7,10]//underline restringe o acesso do atributo ao objeto
+                this._canalAtivo = 5
+                this._volume = 5
+            }
+
+            //getters e setters
+            get canalAtivo() {/*se criado um get, automaticamente o interpretador do js, sabe-se que é preciso procurar
+                uma função com tal descrição, portanto, é uma pseudovariável*/
+                return this._canalAtivo
+            }//modo certo de acessar um atributo privado
+            set canalAtivo(canal) {/*define uma função com o mesmo nome do atributo, em que pode-se recuperar um 
+                parâmetro, nesse exemplo (canal), esse parâmetro atualizará o atributo em questão*/
+                
+                if(this._relacaoCanais.indexOf(canal) !== -1)
+                /*indexOf() irá verificar se dentro do array "relacaoCanais", 
+                há uma referência para o (canal) se valor for encontrado, retornará o índice do valor, se não, irá 
+                retornar -1*/
+                console.log(x)
+                this._canalAtivo = canal
+            }
+        }/*ao invés de acessar o atributo diretamente do objeto, está sendo indicado, através de uma convenção,
+         que esse atributo é privado e a regra de acesso a ele precisa ser respeitada*/
+
+        let tv = new Tv()
+
+        tv._canalAtivo = 7// atribuindo valor a pseudovariável canalAtivo
+        console.log(tv._canalAtivo) /*- atributo ainda pode ser acessado assim, porém, quando coloca-se
+        o underline, sugere-se que o programador, não tente acessar o objeto dessa forma.
+        
+        o ideal, seria acessá-lo com o método GET, que retorna o atributo para nós*/
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
