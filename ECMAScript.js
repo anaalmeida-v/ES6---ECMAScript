@@ -338,6 +338,301 @@ console.log(cachorro)
 console.log(passaro)
 console.log(papagaio)
 
+/**
+ * 
+ * OPERADOR SUPER
+ * 
+ */
+class Animal {
+    constructor(cor, tamanho, peso) {
+        this.cor = null
+        this.tamanho = null
+        this.peso = null
+    }
+
+    dormir() {
+        console.log('Dormir')
+    }
+}
+
+class Passaro extends Animal {
+    constructor(bico, cor, tamanho, peso) {
+        super(cor, tamanho, peso)
+        this.bico = bico
+    }
+
+    voar() {
+        console.log('Voar')
+    }
+}
+
+class Papagaio extends Passaro {
+    constructor(sabeFalar, cor, tamanho, peso) {
+        super('Médio', cor, tamanho, peso)
+        this.sabeFalar = null
+    }
+
+    falar() {
+        console.log('Falar')
+    }
+}
+
+let papagaiO = new Papagaio(true, 'Verde', 25, 350)
+console.log(papagaio)
+
+let papagaio2 = new Papagaio(false, 'Branco', 10, 80)
+console.log(papagaio)
+
+/**
+ * PILAR POLIMORFISMO
+ */
+class Animal {
+    constructor(cor, tamanho, peso) {
+        this.cor = null
+        this.tamanho = null
+        this.peso = null
+    }
+
+    dormir() {
+        console.log('Dormir')
+    }
+}
+
+class Passaro extends Animal {
+    constructor(bico, cor, tamanho, peso) {
+        super(cor, tamanho, peso)
+        this.bico = bico
+    }
+
+    voar() {
+        console.log('Voar')
+    }
+}
+
+class Papagaio extends Passaro {
+    constructor(sabeFalar, cor, tamanho, peso) {
+        super('Médio', cor, tamanho, peso)
+        this.sabeFalar = null
+    }
+
+    falar() {
+        console.log('Falar')
+    }
+}
+
+class Avestruz extends Passaro {
+    constructor() {
+        super('Grande', 'Branco e preto', 250, 15000)
+    }
+
+    enterrarCabeca() {
+        console.log('Enterrar a cabeça')
+    }
+    voar() {
+        console.log('Não sabe voar')
+    }
+}
+
+let Papagaio = new Papagaio(true, 'Verde', 25, 350)
+console.log(papagaio)
+
+let avestruz = new Avestruz()
+avestruz.enterrarCabeca()
+
+
+/*
+*   OBJETOS LITERAIS
+*/
+
+class Produto {
+    constructor(descricao, preco) {
+        this.descricao = descricao
+        this.preco = preco
+    }
+
+    verDescricao() {
+        console.log(`${this.descricao} por apenas ${this.preco}`)
+    }
+}
+
+produto = new Produto('Nootebook', 2200)
+produto.verDescricao()
+
+//----------------------------
+
+let produtoLiteral = {
+    descricao: 'Geladeira',
+    preco: 1800,
+    verDescricao: function () {
+        console.log(`${this.descricao} por apenas ${this.preco}`)
+    }
+}
+/*Para definir que é um objeto literal, é necessário ter:
+- abertura e fechamento de chaves
+- pares de nome, atributo ou chave e valor (nome-atributo/método)-no caso de um método o valor é uma função
+(ação executada pelo método)
+- esses pares funcionam como atributos do objeto
+- esses conjuntos de nome e valor, são separados por uma vírgula, isso é o que indica que aquele par terminou
+- nome e valor são separados por dois pontos
+- é necessário indicar que uma função como function() depois dos dois pontos
+- não é necessário um procedimento de instância, pois objeto já esta descrito
+*/
+
+//acessar objeto
+produtoLiteral.verDescricao()
+
+//----------------------------------------as vezes não é necessário classes e usar um objeto literal facilita
+/*formulario -> servidor
+    recupera dados e monta um objeto Literal
+        obj literal -> JSON -> HTTP -> Server -> Armazena*/
+
+//JSON é algo diferente de obj literal.
+
+/****
+ * OBJETOS LITERAIS - MELHORIAS NOTAÇÃO
+ */
+
+//consiste em deixar objetos menos verbosos: (valor será interpretado nas variáveis declaradas inicialmente)
+
+let objeto2 = {
+    nome,
+    idade,
+    sexo,
+    profissao,
+    exibirResumo() {
+        console.log(`${this.nome}, ${this.idade} anos, ${this.sexo} é ${this.profissao}`)
+    }
+}
+
+//pode-se mudar o nome da variável que será exibido valor dentro do objeto
+//nomeTeste - this.nomeTeste
+
+console.log(objeto2)
+objeto.exibirResumo()
+
+
+/**
+ * OBJETO LITERAL - MODIFICANDO VALORES
+ */
+
+let pessoa = {
+    nome: 'José',
+    idade: 45
+}
+
+console.log(pessoa)
+
+pessoa.nome = 'Fernanda'
+pessoa.idade = 32
+
+console.log(pessoa.nome)
+console.log(pessoa.idade)
+
+
+/**
+ * OBJETO LITERAL - INCLUSAO DE ATRIBUTOS E MÉTODOS
+ */
+
+let pessoa = {
+    nome: 'Maria',
+    idade: 25
+}
+
+console.log(pessoa)
+
+//-------------------
+
+pessoa.sexo = 'Feminino'
+
+console.log(pessoa)
+
+pessoa.dizerOi = () => console.log('Olá, tudo bem?')
+
+//inclusão de atributo e método dentro de obj literais
 
 
 
+/**
+ * OBJETO LITERAL - MODIFICANDO VALORES
+ */
+
+let pessoa = {
+    nome: 'José',
+    idade: 45
+}
+
+console.log(pessoa)
+
+pessoa.nome = 'Fernanda'
+pessoa.idade = 32
+
+console.log(pessoa.nome)
+console.log(pessoa.idade)
+
+/**
+ * OBJETO LITERAL - CRIAÇÃO DINÂMICA DE PARES NOME/VALOR
+ */
+
+let nomeE = 'Jorge' //document.getElementById('nome').value
+let idade = 29
+let sexo = 'Masculino'
+let profissao = 'Programador'
+
+let objeto = {
+    nome: nome,
+    idade: idade,
+    sexo: sexo,
+    profissao: profissao,
+    exibirResumo: function () {
+        console.log(`${this.nome}, ${this.idade} anos, ${this.sexo} é ${this.profissao}`)
+    }
+}
+
+console.log(objeto)
+objeto.exibirResumo()
+
+//------------------------
+//consiste em deixar objetos menos verbosos: (valor será interpretado nas variáveis declaradas inicialmente)
+
+let objeto0 = {
+    nome,
+    idade,
+    sexo,
+    profissao,
+    exibirResumo() {
+        console.log(`${this.nome}, ${this.idade} anos, ${this.sexo} é ${this.profissao}`)
+    }
+}
+
+//pode-se mudar o nome da variável que será exibido valor dentro do objeto
+//nomeTeste - this.nomeTeste
+
+console.log(objeto2)
+objeto.exibirResumo()
+
+/**
+ * OBJETO LITERAL - OBJETOS ÚNICOS
+ */
+let assinatura = {
+    idCliente: 1000,
+    descricao: 'Acesso a internet',
+    status() {
+        console.log('Ativo')
+    }
+}
+
+console.log(assinatura.descricao)
+
+/*variável y, irá conter mesmos atributos e método que variável assinatura, funciona de forma contrária
+a herança
+os atributos e métodos, poderão ser acessados pela var 'y' ou 'assinatura', pois as duas
+contém os mesmos valores*/
+let y = assinatura
+console.log(y.descricao)
+
+///
+y.descricao = 'Internet + tv + telefone'
+
+console.log(assinatura.descricao)
+console.log(y.descricao)
+//o console das duas variáveis resultarão na mesma coisa

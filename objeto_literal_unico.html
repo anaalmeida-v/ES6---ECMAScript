@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+
+        let assinatura = {
+            idCliente: 1000,
+            descricao: 'Acesso a internet',
+            status() {
+                console.log('Ativo')
+            }
+        }
+
+        console.log(assinatura.descricao)
+
+        /*variável y, irá conter mesmos atributos e método que variável assinatura, funciona de forma contrária
+        a herança
+        os atributos e métodos, poderão ser acessados pela var 'y' ou 'assinatura', pois as duas
+        contém os mesmos valores*/
+        let y = assinatura
+        console.log(y.descricao)
+
+        ///
+        y.descricao = 'Internet + tv + telefone'
+
+        console.log(assinatura.descricao)
+        console.log(y.descricao)
+        //o console das duas variáveis resultarão na mesma coisa
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

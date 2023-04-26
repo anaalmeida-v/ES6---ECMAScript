@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+        class Produto {
+            constructor(descricao, preco) {
+                this.descricao = descricao
+                this.preco = preco
+            }
+
+            verDescricao() {
+                console.log(`${this.descricao} por apenas ${this.preco}`)
+            }
+        }
+
+        produto = new Produto('Nootebook', 2200)
+        produto.verDescricao()
+
+        //----------------------------
+
+        let produtoLiteral = {
+            descricao: 'Geladeira',
+            preco: 1800,
+            verDescricao: function() {
+                console.log(`${this.descricao} por apenas ${this.preco}`)
+            }
+        }
+        /*Para definir que é um objeto literal, é necessário ter:
+        - abertura e fechamento de chaves
+        - pares de nome, atributo ou chave e valor (nome-atributo/método)-no caso de um método o valor é uma função
+        (ação executada pelo método)
+        - esses pares funcionam como atributos do objeto
+        - esses conjuntos de nome e valor, são separados por uma vírgula, isso é o que indica que aquele par terminou
+        - nome e valor são separados por dois pontos
+        - não é necessário um procedimento de instância, pois objeto já esta descrito
+        */
+
+        //acessar objeto
+        produtoLiteral.verDescricao()
+
+        //----------------------------------------as vezes não é necessário classes e usar um objeto literal facilita
+        /*formulario -> servidor
+            recupera dados e monta um objeto Literal 
+                obj literal -> JSON -> HTTP -> Server -> Armazena*/
+
+        //JSON é algo diferente de obj literal.
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
