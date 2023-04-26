@@ -10,46 +10,58 @@
 const getMessage = () => "Hello World";
 document.getElementById('output').innerHTML = getMessage();
 //</script>
+//-------------------------------------------------------------------------------------------
+/**
+ * VAR E LET
+ */
+//3 escopos: global, função e bloco
+//variáveis declaradas do global, está disponível para todos, basicamente é o objeto window
+//variáveis declarada na função só funcionará dentro da mesma e dentro do bloco da função
+//variáveis declaradas com var podem ser utilizadas até antes da sua declaração
+//enquanto variáveis declaradas com let só funcionará depois de sua declaração
+/*os únicos escopos que sofrem elevação, e tem comportamento diferente em relação a var e let,
+são os escopos de bloco*/
 
-/*
- 
-var e let
- 
+/*var serie = 'Friends'
+
+{
+    var serie = 'The Walking Dead'
+    console.log('dentro do bloco: ' + serie)
+}//será exibido 'The Walinkg Dead'
+console.log('fora do bloco: ' + serie)
 */
+
 let serie = 'Friends'
 
 {
     let serie = 'The Walking Dead'/*será exibido 'The Walinkg Dead' primeiro, pois o escopo de bloco 
-        é mais específico*/
+            é mais específico*/
     console.log('dentro do bloco: ' + serie)
 }
 console.log('fora do bloco: ' + serie)
 
+//-------------------------------------------------------------------------------------------
 /**
- * 
- *  CONST
- 
-*/
-
+ * CONST
+ */
 /*escopo global não afeta escopo da função, então caso seja preciso criar uma variável na função com o mesmo 
-    nome da variável global, não há problemas*/
+        nome da variável global, não há problemas*/
 //não é possível atribuir outro valor a essa variável em outro momento do código
 
-//const serie = 'Friends' - COMENTADO POR QUESTÕES DE ERRO NO CÓDIGO
+const seriee = 'Friends'
 
 function x() {
     const serie = 'The Walking Dead'
-    console.log('dentro da função: ' + serie)
+    console.log('dentro da função: ' + seriee)
 }
 x()
 
-console.log('escopo global: ' + serie)
+console.log('escopo global: ' + seriee)
 
+//-------------------------------------------------------------------------------------------
 /**
- * 
  * TEMPLATE STRING
- 
-*/
+ */
 let nome = 'Jorge'
 
 //console.log('Oi' + nome + 'tudo bem?')//modo errado
@@ -65,11 +77,9 @@ function calcular(x, y) {
 console.log(`A multiplicação de 8 x 8 é: ${calcular(8, 8)}`)/*é possível interpolar uma função,
         e adicionar parâmetros*/
 
-
+//-------------------------------------------------------------------------------------------
 /**
- * 
- *  FUNÇÕES DEFAULT
- * 
+ * FUNÇÕES PARÂMETROS DEFAULT
  */
 function contarUmaHistoria(personagem = 'Fubá', atividade = 'Correr no parque', nome_dono = 'João') {
     document.write(`Era uma vez um cachorro chamado ${personagem}, ele adorava ${atividade}, seu dono era o ${nome_dono} e eles viveram feliz para sempre`)
@@ -83,11 +93,9 @@ contarUmaHistoria(undefined, 'Enterrar Ossos', 'Pedro')
 /*caso não precise ou não de interesse definir um novo parâmetro para um ou mais dos mesmos, é só colocar no
 lugar do parâmetro *undefined*, isso fará que seja retornado o parâmetro default*/
 
-
+//-------------------------------------------------------------------------------------------
 /**
- * 
  * FUNÇÕES - ARROW FUNCTION
- * 
  */
 /*
         let quadrado = function(x = 5) {           --normal function
@@ -123,12 +131,10 @@ let parOuImpar = numero => numero % 2 === 0 ? 'par' : 'ímpar' //return implíci
 
 document.write(parOuImpar(4))
 
+//-------------------------------------------------------------------------------------------
 /**
- * 
- * ORIENTAÇÃO A OBJETOS
- * Pilar da Abstração
+ * ORIENTAÇÃO A OBJETOS - PILARES - ABSTRAÇÃO
  */
-
 //class - modelo do objeto
 //objeto - instância do modelo
 
@@ -168,11 +174,13 @@ console.log(x.consultarSaldo())
 
 console.log(y.consultarSaldo())
 
+//-------------------------------------------------------------------------------------------
 /**
- * Pilar da Abstração Reflexão
- * 
+ * ORIENTAÇÃO A OBJETOS - PILARES - ABSTRAÇÃO-REFLEXÃO
  */
+
 //um software de marcenaria
+
 //cadeira e sofa - objetos envolvidos
 
 //paradigma procedural
@@ -184,7 +192,6 @@ let cor = 'azul'*/
 
 //array de cadeiras
 let cadeiras = Array()
-cadeiras[0] = Array()
 cadeiras[0]['qtde_pernas'] = 4
 cadeiras[0]['giratoria'] = false
 cadeiras[0]['cor'] = 'azul'
@@ -196,58 +203,72 @@ cadeiras[1]['cor'] = 'vermelha'
 
 function girar_cadeira(indice) {
     if (cadeiras[indice]['giratoria'] === true) {
-        console.log('girou')
-    } else {
-        console.log('cadeira não é giratória')
-    }
-}
 
-function adicionar_cadeira(qtde_pernas, giratoria, cor) {
-    let cadeira = []
+        //cadeira e sofa
 
-    cadeira['qtde_pernas'] = qtde_pernas
-    cadeira['giratoria'] = giratoria
-    cadeira['cor'] = cor
+        //paradigma procedural
 
-    cadeira.push(cadeira)
-}
-adicionar_cadeira(3, false, 'verde')
+        //cadeira
+        let qtd_pernas = 4
+        let giratoria = false
+        let cor = 'azul'
 
-console.log(cadeiras)
-//girar_cadeira(0)
-
-//paradigma de OO 
-class Cadeira {
-    constructor(qtde_pernas, giratoria, cor) {
-        this.qtde_pernas = qtde_pernas
-        this.giratoria = giratoria
-        this.cor = cor
-    }
-
-    girarCadeira() {
-        if (this.giratoria === true) {
-            console.log('girou')
-        } else {
-            console.log('Cadeira não é giratória')
+        function girar_cadeira() {
+            if (giratoria === true) {
+                console.log('girou')
+            } else {
+                console.log('cadeira não é giratória')
+            }
         }
+
+        function adicionar_cadeira(qtde_pernas, giratoria, cor) {
+            let cadeira = []
+
+            cadeira['qtde_pernas'] = qtde_pernas
+            cadeira['giratoria'] = giratoria
+            cadeira['cor'] = cor
+
+            cadeira.push(cadeira)
+        }
+        adicionar_cadeira(3, false, 'verde')
+
+        console.log(cadeiras)
+        //girar_cadeira(0)
+
+        //paradigma de OO 
+        class Cadeira {
+            constructor(qtde_pernas, giratoria, cor) {
+                this.qtde_pernas = qtde_pernas
+                this.giratoria = giratoria
+                this.cor = cor
+            }
+
+            girarCadeira() {
+                if (this.giratoria === true) {
+                    console.log('girou')
+                } else {
+                    console.log('Cadeira não é giratória')
+                }
+            }
+        }
+        // let cadeira = new Cadeira(4, false, 'azul')
+        // let cadeira2 = new Cadeira(1, true, 'vermelha')
+
+        let cadeiras = Array()
+        cadeiras.push(new Cadeira(4, false, 'azul'))
+        cadeiras.push(new Cadeira(1, true, 'vermelha'))
+        // console.log(cadeira)
+        //cadeira2.girarCadeira()
+
+        cadeira2.girarCadeira()
+        girar_cadeira()
     }
 }
-// let cadeira = new Cadeira(4, false, 'azul')
-// let cadeira2 = new Cadeira(1, true, 'vermelha')
 
-let cadeiras = Array()
-cadeiras.push(new Cadeira(4, false, 'azul'))
-cadeiras.push(new Cadeira(1, true, 'vermelha'))
-// console.log(cadeira)
-//cadeira2.girarCadeira()
-
-cadeira2.girarCadeira()
-
+//-------------------------------------------------------------------------------------------
 /**
- * PILAR DO ENCAPSULAMENTO
- * 
+ * ORIENTAÇÃO A OBJETOS - PILARES - ENCAPSULAMENTO
  */
-
 class Tv {
     constructor() {
         this._relacaoCanais = [2, 4, 5, 7, 10]//underline restringe o acesso do atributo ao objeto
@@ -281,14 +302,15 @@ o underline, sugere-se que o programador, não tente acessar o objeto dessa form
 
 o ideal, seria acessá-lo com o método GET, que retorna o atributo para nós*/
 
+//-------------------------------------------------------------------------------------------
 /**
- * PILAR DA HERANÇA
+ * ORIENTAÇÃO A OBJETOS - PILARES - HERANÇA
  */
-
 class Animal {
     constructor() {
         this.cor = ''
         this.tamanho = null
+        this.peso = null
     }
 
     dormir() {
@@ -338,10 +360,9 @@ console.log(cachorro)
 console.log(passaro)
 console.log(papagaio)
 
+//-------------------------------------------------------------------------------------------
 /**
- * 
  * OPERADOR SUPER
- * 
  */
 class Animal {
     constructor(cor, tamanho, peso) {
@@ -377,14 +398,15 @@ class Papagaio extends Passaro {
     }
 }
 
-let papagaiO = new Papagaio(true, 'Verde', 25, 350)
-console.log(papagaio)
+let papagaioo = new Papagaio(true, 'Verde', 25, 350)
+console.log(papagaioo)
 
 let papagaio2 = new Papagaio(false, 'Branco', 10, 80)
 console.log(papagaio)
 
+//-------------------------------------------------------------------------------------------
 /**
- * PILAR POLIMORFISMO
+ * ORIENTAÇÃO A OBJETOS - PILARES - POLIMORFISMO
  */
 class Animal {
     constructor(cor, tamanho, peso) {
@@ -433,17 +455,16 @@ class Avestruz extends Passaro {
     }
 }
 
-let Papagaio = new Papagaio(true, 'Verde', 25, 350)
-console.log(papagaio)
+let papagaio1 = new Papagaio(true, 'Verde', 25, 350)
+console.log(papagaio1)
 
 let avestruz = new Avestruz()
 avestruz.enterrarCabeca()
 
-
-/*
-*   OBJETOS LITERAIS
-*/
-
+//-------------------------------------------------------------------------------------------
+/**
+ * OBJETOS LITERAIS - ESTÁTICOS
+ */
 class Produto {
     constructor(descricao, preco) {
         this.descricao = descricao
@@ -474,7 +495,6 @@ let produtoLiteral = {
 - esses pares funcionam como atributos do objeto
 - esses conjuntos de nome e valor, são separados por uma vírgula, isso é o que indica que aquele par terminou
 - nome e valor são separados por dois pontos
-- é necessário indicar que uma função como function() depois dos dois pontos
 - não é necessário um procedimento de instância, pois objeto já esta descrito
 */
 
@@ -483,108 +503,27 @@ produtoLiteral.verDescricao()
 
 //----------------------------------------as vezes não é necessário classes e usar um objeto literal facilita
 /*formulario -> servidor
-    recupera dados e monta um objeto Literal
+    recupera dados e monta um objeto Literal 
         obj literal -> JSON -> HTTP -> Server -> Armazena*/
 
 //JSON é algo diferente de obj literal.
 
-/****
- * OBJETOS LITERAIS - MELHORIAS NOTAÇÃO
- */
-
-//consiste em deixar objetos menos verbosos: (valor será interpretado nas variáveis declaradas inicialmente)
-
-let objeto2 = {
-    nome,
-    idade,
-    sexo,
-    profissao,
-    exibirResumo() {
-        console.log(`${this.nome}, ${this.idade} anos, ${this.sexo} é ${this.profissao}`)
-    }
-}
-
-//pode-se mudar o nome da variável que será exibido valor dentro do objeto
-//nomeTeste - this.nomeTeste
-
-console.log(objeto2)
-objeto.exibirResumo()
-
-
+//-------------------------------------------------------------------------------------------
 /**
- * OBJETO LITERAL - MODIFICANDO VALORES
+ * OBJETOS LITERAIS - MELHORIAS DE NOTAÇÃO
  */
-
-let pessoa = {
-    nome: 'José',
-    idade: 45
-}
-
-console.log(pessoa)
-
-pessoa.nome = 'Fernanda'
-pessoa.idade = 32
-
-console.log(pessoa.nome)
-console.log(pessoa.idade)
-
-
-/**
- * OBJETO LITERAL - INCLUSAO DE ATRIBUTOS E MÉTODOS
- */
-
-let pessoa = {
-    nome: 'Maria',
-    idade: 25
-}
-
-console.log(pessoa)
-
-//-------------------
-
-pessoa.sexo = 'Feminino'
-
-console.log(pessoa)
-
-pessoa.dizerOi = () => console.log('Olá, tudo bem?')
-
-//inclusão de atributo e método dentro de obj literais
-
-
-
-/**
- * OBJETO LITERAL - MODIFICANDO VALORES
- */
-
-let pessoa = {
-    nome: 'José',
-    idade: 45
-}
-
-console.log(pessoa)
-
-pessoa.nome = 'Fernanda'
-pessoa.idade = 32
-
-console.log(pessoa.nome)
-console.log(pessoa.idade)
-
-/**
- * OBJETO LITERAL - CRIAÇÃO DINÂMICA DE PARES NOME/VALOR
- */
-
-let nomeE = 'Jorge' //document.getElementById('nome').value
+let nomee = 'Jorge' //document.getElementById('nome').value
 let idade = 29
 let sexo = 'Masculino'
 let profissao = 'Programador'
 
 let objeto = {
-    nome: nome,
+    nomee: nomee,
     idade: idade,
     sexo: sexo,
     profissao: profissao,
     exibirResumo: function () {
-        console.log(`${this.nome}, ${this.idade} anos, ${this.sexo} é ${this.profissao}`)
+        console.log(`${this.nomee}, ${this.idade} anos, ${this.sexo} é ${this.profissao}`)
     }
 }
 
@@ -594,13 +533,13 @@ objeto.exibirResumo()
 //------------------------
 //consiste em deixar objetos menos verbosos: (valor será interpretado nas variáveis declaradas inicialmente)
 
-let objeto0 = {
-    nome,
+let objeto2 = {
+    nomee,
     idade,
     sexo,
     profissao,
     exibirResumo() {
-        console.log(`${this.nome}, ${this.idade} anos, ${this.sexo} é ${this.profissao}`)
+        console.log(`${this.nomee}, ${this.idade} anos, ${this.sexo} é ${this.profissao}`)
     }
 }
 
@@ -610,8 +549,48 @@ let objeto0 = {
 console.log(objeto2)
 objeto.exibirResumo()
 
+//-------------------------------------------------------------------------------------------
 /**
- * OBJETO LITERAL - OBJETOS ÚNICOS
+ * OBJETOS LITERAIS - MODIFICANDO VALORES
+ */
+let pessooa = {
+    nome: 'José',
+    idade: 45
+}
+
+console.log(pessooa)
+
+pessooa.nome = 'Fernanda'
+pessooa.idade = 32
+
+console.log(pessooa.nome)
+console.log(pessooa.idade)
+
+//-------------------------------------------------------------------------------------------
+/**
+ * OBJETOS LITERAIS - CRIAÇÃO DINÂMICA DE PARES NOME/VALOR
+ */
+let pessoaa = {
+    nome: 'Maria',
+    idade: 25
+}
+
+console.log(pessoaa)
+
+//-------------------
+
+pessoaa.sexo = 'Feminino'
+
+console.log(pessoa)
+
+pessoaa.dizerOi = () => console.log('Olá, tudo bem?')
+
+//inclusão de atributo e método dentro de obj literais
+
+
+//-------------------------------------------------------------------------------------------
+/**
+ * OBJETOS LITERAIS - OBJETOS ÚNICOS
  */
 let assinatura = {
     idCliente: 1000,
@@ -627,12 +606,51 @@ console.log(assinatura.descricao)
 a herança
 os atributos e métodos, poderão ser acessados pela var 'y' ou 'assinatura', pois as duas
 contém os mesmos valores*/
-let y = assinatura
-console.log(y.descricao)
+let y1 = assinatura
+console.log(y1.descricao)
 
 ///
-y.descricao = 'Internet + tv + telefone'
+y1.descricao = 'Internet + tv + telefone'
 
 console.log(assinatura.descricao)
-console.log(y.descricao)
+console.log(y1.descricao)
 //o console das duas variáveis resultarão na mesma coisa
+
+//-------------------------------------------------------------------------------------------
+/**
+ * FUNÇÃO CONSTRUTORA - CRIANDO OBJETOS
+ */
+//estrutura semelhante a de Classe
+let Carro = () => {
+    this.cor = 'Amarelo'
+    this.modelo = 'Chevette'
+    this.velocidadeAtual = 0
+    this.velocidadeMaxima = 180
+
+    this.acelerar = () => {
+        //this.velocidadeAtual += 10
+
+        let velocidade = this.getVelocidadeAtual() + 10
+        this.setVelocidadeAtual(velocidade)
+    }
+
+    this.getVelocidadeAtual = () => {
+        return this.velocidadeAtual
+    }
+    this.setVelocidadeAtual = (velocidadeAtual) => {
+        this.velocidadeAtual = velocidadeAtual
+    }
+}
+
+let carro = new Carro()//semelhante a como é feita a criação de objetos a partir de classe
+
+console.log(`A velocidade atual é: ${carro.getVelocidadeAtual()}`)
+carro.acelerar()
+carro.acelerar()
+carro.acelerar()
+console.log(`A velocidade atual é: ${carro.getVelocidadeAtual()}`)
+
+//-------------------------------------------------------------------------------------------
+/**
+ * FUNÇÕES CONSTRUTORAS - ENCAPSULANDO ATRIBUTOS E MÉTODOS
+ */
