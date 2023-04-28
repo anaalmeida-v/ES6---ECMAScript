@@ -829,3 +829,62 @@ let vertebrado = { __proto__: animal, attr2: 'b' }
 let ave = { __proto__: vertebrado, attr3: 'c' }// (__proto__: protótipo)-indicando o protótipo da variável ave
 
 console.log(ave.attr3, ave.attr2, ave.attr1)
+
+//-------------------------------------------------------------------------------------------
+/**
+ * OPERADOR REST/SPREAD PARTE 1
+ */
+//Contexto Spread
+
+//string
+let tituloArtigo = 'Como utilizar o operador rest/spread'
+
+console.log(tituloArtigo)
+console.log(...tituloArtigo)
+console.log([...tituloArtigo])
+
+//arrays
+let listaCursos1 = ['Node JS e MongoDb', 'ES6, TypeScript e Angular 4']
+let listaCursos2 = ['Multiplataforma Android/IOS', 'Introdução ao GNU/Linux']
+let listaCursosCompleto = ['Web Completo', 'Android Completo', ...listaCursos1, ...listaCursos2]
+//espalhará os arrays de modo aleatório
+
+console.log(listaCursosCompleto)
+
+//objetos
+let pessoa = { nome: 'João', idade: 27 }
+let clone = { endereco: 'Rua Abc', ...pessoa }
+
+console.log(clone)//serão exibidos valores das duas variáveis, em ordem de definição
+
+
+//-------------------------------------------------------------------------------------------
+/**
+ * OPERADOR REST/SPREAD PARTE 2
+ */
+
+//contexto rest
+
+function soma(...param) {//fará com que seja retornado um único parâmetro em formato de array 
+    let resultado = 0
+
+    console.log(param)
+
+    param.forEach(v => resultado += v)//soma dos parâmetros
+
+    return resultado
+}
+
+console.log(soma(3, 8, 5, 7))
+
+function multiplicacao(m, ...p) {
+    //console.log(m) //m - multiplicador
+    let resultado = 0
+    //console.log(p) //quantidade de valores indefinidas que serão individualmente multiplicados pelo (m)
+
+    p.forEach(v => resultado += m * v)//.forEach - executa uma dada função em cada elemento de um array.
+
+    return
+}
+
+console.log(multiplicacao(5, 7, 12, 3, 49))
