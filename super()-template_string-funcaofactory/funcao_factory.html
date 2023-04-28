@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        //requisição http
+        //resposta http
+        let Bicicleta1 = {
+            cor: 'Branca',
+            marcha: 'única',
+            aro: 12,
+            pedalar(){ console.log('Método pedalar executado')}
+        }
+
+        let Bicicleta2 = {
+            cor: 'Vermelha',
+            marcha: '18',
+            aro: 26,
+            pedalar(){ console.log('Método pedalar executado')}
+        }
+
+        console.log(Bicicleta1)
+        console.log(Bicicleta2)
+
+        //variável que recebe uma função
+        let BicicletaFactory = (cor, marcha, aro) => {
+            //lógica//requisição http //resposta http
+            /*sempre que essa função for chamada, ela irá retornar um objeto que vai ser constituído a 
+            partir das instruções acima*/
+            return {
+                cor, 
+                marcha,
+                aro,
+                tipoPedal,                                                                                                                                                                                                                        
+                pedalar() { console.log('Método pedalar executado')}
+            }
+        }
+
+        let Bicicleta3 = BicicletaFactory('Vermelha', '18', 26)
+        console.log(Bicicleta3)
+        //passando o valor retornado da função para uma variável, mudando seus respectivos valores.
+        //seria útil numa situação de ter uma grande quantidade de coisas iguas com valores diferentes.
+        //ao invés da repetição, aconteceria a construção dessa lógica em um ponto único, fazendo com que tenha menos linhas de código
+        let Bicicleta4 = BicicletaFactory('Preta', '21', 29)
+        console.log(Bicicleta4)
+
+        console.log(`Cor: ${Bicicleta3.cor}`)
+        Bicicleta3.pedalar()
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+<!-- Load Babel -->
+<!-- v6 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!-- Your custom script here -->
+<script type="text/babel">
+const getMessage = () => "Hello World";
+document.getElementById('output').innerHTML = getMessage();
+</script>
+</body>
+</html>

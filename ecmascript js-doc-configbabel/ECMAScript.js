@@ -654,3 +654,178 @@ console.log(`A velocidade atual é: ${carro.getVelocidadeAtual()}`)
 /**
  * FUNÇÕES CONSTRUTORAS - ENCAPSULANDO ATRIBUTOS E MÉTODOS
  */
+let Carroo2 = () => {
+    /*não há a função constructor() por não ser uma notação baseada em classe e sim uma função que vai ser
+    construída a partir do operador new*/
+    this.velocidadeMaxima = 180
+
+    this.cor = 'Amarelo'
+    this.modelo = 'Chevette'
+    this.velocidadeAtual = 0
+
+    this.acelerar = () => {
+        let velocidade = this.getVelocidadeAtual() + 50
+        if (velocidade > this.velocidadeMaxima) {
+            velocidade = this.velocidadeMaxima
+        }
+        this.setVelocidadeAtual(velocidade)
+    }
+
+    this.getVelocidadeAtual = () => {
+        return this.velocidadeAtual
+    }
+    this.setVelocidadeAtual = (velocidadeAtual) => {
+        this.velocidadeAtual = velocidadeAtual
+    }
+}
+
+let carro2 = new Carro()
+console.log(carro.velocidadeAtual)
+carro.acelerar()
+console.log(carro.velocidadeAtual)
+carro.acelerar()
+console.log(carro.velocidadeAtual)
+carro.acelerar()
+console.log(carro.velocidadeAtual)
+carro.acelerar()
+console.log(carro.velocidadeAtual)
+carro.acelerar()
+console.log(carro.velocidadeAtual)
+carro.acelerar()
+console.log(carro.velocidadeAtual)
+
+//-----------------------------------------
+
+let Carro2 = () => {
+
+    this.velocidadeMaxima = 180
+    this.quilometrosRodados = 0
+
+    this.cor = 'Amarelo'
+    this.modelo = 'Chevette'
+    this.velocidadeAtual = 0
+
+    this.acelerar = () => {
+        let velocidade = this.getVelocidadeAtual() + 50
+        if (velocidade > this.velocidadeMaxima) {
+            velocidade = this.velocidadeMaxima
+        }
+        this.setVelocidadeAtual(velocidade)
+
+        quilometrosRodados += 0.05
+        console.log(qui)
+    }
+
+    this.getVelocidadeAtual = () => {
+        return this.velocidadeAtual
+    }
+    this.setVelocidadeAtual = (velocidadeAtual) => {
+        this.velocidadeAtual = velocidadeAtual
+    }
+
+    var setQuilometrosRodados = (q) => {
+        quilometrosRodados += q
+    }
+}
+
+let carroo2 = new Carro()
+console.log(carro2.velocidadeAtual)
+carro2.acelerar()
+console.log(carro2.velocidadeAtual)
+
+//-------------------------------------------------------------------------------------------
+/**
+ * FUNÇÕES FACTORY
+ */
+//requisição http
+//resposta http
+let Bicicleta1 = {
+    cor: 'Branca',
+    marcha: 'única',
+    aro: 12,
+    pedalar() { console.log('Método pedalar executado') }
+}
+
+let Bicicleta2 = {
+    cor: 'Vermelha',
+    marcha: '18',
+    aro: 26,
+    pedalar() { console.log('Método pedalar executado') }
+}
+
+console.log(Bicicleta1)
+console.log(Bicicleta2)
+
+//variável que recebe uma função
+let BicicletaFactory = (cor, marcha, aro) => {
+    //lógica//requisição http //resposta http
+    /*sempre que essa função for chamada, ela irá retornar um objeto que vai ser constituído a 
+    partir das instruções acima*/
+    return {
+        cor,
+        marcha,
+        aro,
+        tipoPedal,
+        pedalar() { console.log('Método pedalar executado') }
+    }
+}
+
+let Bicicleta3 = BicicletaFactory('Vermelha', '18', 26)
+console.log(Bicicleta3)
+//passando o valor retornado da função para uma variável, mudando seus respectivos valores.
+//seria útil numa situação de ter uma grande quantidade de coisas iguas com valores diferentes.
+//ao invés da repetição, aconteceria a construção dessa lógica em um ponto único, fazendo com que tenha menos linhas de código
+let Bicicleta4 = BicicletaFactory('Preta', '21', 29)
+console.log(Bicicleta4)
+
+console.log(`Cor: ${Bicicleta3.cor}`)
+Bicicleta3.pedalar()
+
+//-------------------------------------------------------------------------------------------
+/**
+ * PROTOTYPE INTRO
+ */
+//aviao
+//atributos cor e modelo; método levantarVoo
+
+//objetoliteral
+let a1 = {
+    cor: branco,
+    modelo: 'Airbus a380',
+    levantarVoo: () => { console.log('Levantar Voo') }
+}
+//função construtora
+let AviaoF = () => {
+    this.cor = 'Azul',
+        this.modelo = 'Boeing 787',
+        this.levantarVoo = () => { console.log('Levantar Voo') }
+}
+let a2 = new AviaoF()
+
+//classe
+class AviaoC {
+    constructor() {
+        this.cor = 'Vermelho',
+            this.modelo = 'Embraer E-Jets'
+    }
+
+    levantarVoo() { console.log('Levantar Voo') }
+}
+
+let a3 = new AviaoC()
+
+console.log(a1)
+console.log(a2)
+console.log(a3)
+
+//-------------------------------------------------------------------------------------------
+/**
+ * PROTOTYPE - HERANÇA
+ */
+
+//na essência, todos são filhos de: Object.protoype
+let animal = { attr1: 'a' }//attr-atributo
+let vertebrado = { __proto__: animal, attr2: 'b' }
+let ave = { __proto__: vertebrado, attr3: 'c' }// (__proto__: protótipo)-indicando o protótipo da variável ave
+
+console.log(ave.attr3, ave.attr2, ave.attr1)

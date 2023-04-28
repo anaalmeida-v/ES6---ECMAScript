@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+    <script type="text/babel">
         //estrutura semelhante a de Classe
         let Carro = () => {
             this.cor = 'Amarelo'
@@ -16,13 +14,12 @@
             this.velocidadeMaxima = 180
 
             this.acelerar = () => {
-                //this.velocidadeAtual += 10 
-                
-                let velocidade = this.getVelocidadeAtual() + 10
+                // this.velocidadeAtual += 10
+                let velocidade = this.getVelocidadeAutal() + 10
                 this.setVelocidadeAtual(velocidade)
-            }
 
-            this.getVelocidadeAtual = () => {
+            }
+            this.getVelocidadeAutal = () => {
                 return this.velocidadeAtual
             }
             this.setVelocidadeAtual = (velocidadeAtual) => {
@@ -32,16 +29,15 @@
 
         let carro = new Carro()//semelhante a como é feita a criação de objetos a partir de classe
 
-        console.log(`A velocidade atual é: ${carro.getVelocidadeAtual()}`)
+        console.log(`A velocidade atual é ${carro.getVelocidadeAutal()}`)
         carro.acelerar()
-        carro.acelerar()
-        carro.acelerar()
-        console.log(`A velocidade atual é: ${carro.getVelocidadeAtual()}`)
+        console.log(`A velocidade atual é ${carro.getVelocidadeAutal()}`)
+
     </script>
 </head>
 
 <body>
-
+    <div id="output"></div>
 </body>
 
 </html>

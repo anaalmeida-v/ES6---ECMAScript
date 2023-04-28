@@ -6,9 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <script>
-        let Carro = () => {
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+    <script type="text/babel">
+        let Carro = () => {
+            /*não há a função constructor() por não ser uma notação baseada em classe e sim uma função que vai ser
+            construída a partir do operador new*/
             this.velocidadeMaxima = 180
 
             this.cor = 'Amarelo'
@@ -17,7 +20,7 @@
 
             this.acelerar = () => {
                 let velocidade = this.getVelocidadeAtual() + 50
-                if(velocidade > this.velocidadeMaxima){
+                if (velocidade > this.velocidadeMaxima) {
                     velocidade = this.velocidadeMaxima
                 }
                 this.setVelocidadeAtual(velocidade)
@@ -50,46 +53,55 @@
 
         let Carro2 = () => {
 
-this.velocidadeMaxima = 180
-this.cor = 'Amarelo'
-this.modelo = 'Chevette'
-this.velocidadeAtual = 0
+            this.velocidadeMaxima = 180
+            this.quilometrosRodados = 0
 
-this.acelerar = () => {
-    let velocidade = this.getVelocidadeAtual() + 50
-    if(velocidade > this.velocidadeMaxima){
-        velocidade = this.velocidadeMaxima
-    }
-    this.setVelocidadeAtual(velocidade)
-}
+            this.cor = 'Amarelo'
+            this.modelo = 'Chevette'
+            this.velocidadeAtual = 0
 
-this.getVelocidadeAtual = () => {
-    return this.velocidadeAtual
-}
-this.setVelocidadeAtual = (velocidadeAtual) => {
-    this.velocidadeAtual = velocidadeAtual
-}
-}
+            this.acelerar = () => {
+                let velocidade = this.getVelocidadeAtual() + 50
+                if (velocidade > this.velocidadeMaxima) {
+                    velocidade = this.velocidadeMaxima
+                }
+                this.setVelocidadeAtual(velocidade)
 
-let carroo2 = new Carro()
-console.log(carro2.velocidadeAtual)
-carro2.acelerar()
-console.log(carro2.velocidadeAtual)
-carro2.acelerar()
-console.log(carro2.velocidadeAtual)
-carro2.acelerar()
-console.log(carro2.velocidadeAtual)
-carro2.acelerar()
-console.log(carro2.velocidadeAtual)
-carro2.acelerar()
-console.log(carro2.velocidadeAtual)
-carro2.acelerar()
-console.log(carro2.velocidadeAtual)
+                quilometrosRodados += 0.05
+                console.log(qui)
+            }
+
+            this.getVelocidadeAtual = () => {
+                return this.velocidadeAtual
+            }
+            this.setVelocidadeAtual = (velocidadeAtual) => {
+                this.velocidadeAtual = velocidadeAtual
+            }
+
+            var setQuilometrosRodados = (q) => {
+                quilometrosRodados += q
+            }
+        }
+
+        let carroo2 = new Carro()
+        console.log(carro2.velocidadeAtual)
+        carro2.acelerar()
+        console.log(carro2.velocidadeAtual)
+        carro2.acelerar()
+        console.log(carro2.velocidadeAtual)
+        carro2.acelerar()
+        console.log(carro2.velocidadeAtual)
+        carro2.acelerar()
+        console.log(carro2.velocidadeAtual)
+        carro2.acelerar()
+        console.log(carro2.velocidadeAtual)
+        carro2.acelerar()
+        console.log(carro2.velocidadeAtual)
     </script>
 </head>
 
 <body>
-
+    <div id="output"></div>
 </body>
 
 </html>
