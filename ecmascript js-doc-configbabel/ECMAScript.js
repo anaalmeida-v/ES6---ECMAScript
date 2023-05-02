@@ -888,3 +888,108 @@ function multiplicacao(m, ...p) {
 }
 
 console.log(multiplicacao(5, 7, 12, 3, 49))
+
+//-------------------------------------------------------------------------------------------
+/**
+ * DESTRUCTURING ASSIGNMENT PARTE 1
+ */
+//destructuring - operador de desestruturação - tira valores de dentro de uma estrutura(array ou objeto)
+//contexto de array      
+let frutas = ['Abacaxi', 'Uva', 'Pera', 'Mamão']
+
+/*let a = frutas[0]
+let b = frutas[0]
+let c = frutas[0]*/
+
+let [a, b, , c, d, e = 'Banana'] = frutas //no momento da desestruturação estão sendo declaradas variáveis novas
+//lugar vazio indica que não queremos pular tal índice
+//quando índice não existe, é recuperado um valor undefined
+//caso não queira recuperar valor undefined, é só declarar no momento da desestruturação um valor para tal item
+//console.log(a, b, c, d, e)
+
+let coisas = [['Abacaxi', 'Uva', 'Pera', 'Mamão'], ['José', 'Maria']]
+let [, [, n2]] = coisas
+
+console.log(n2)
+
+//-------------------------------------------------------------------------------------------
+/**
+ * DESTRUCTURING ASSIGNMENT PARTE 2
+ */
+//é um - aql obj é alguma coisa
+//tem um(quando é o valor de outro obj) - tem um detalhe
+let produto = {
+    descricao: 'Notebook',
+    preco: 1800,
+    detalhes: {
+        fabricante: 'abc',
+        modelo: 'xyz'
+    }//composição
+}
+
+/* token
+array => []
+objeto => {}
+*/
+//let { descricao, preco } = produto
+
+/*let {descricao: d, preco: p = 1000, desconto = 5} = produto/*desestruturando descricao e preco de dentro do produto, 
+para serem usadas como d e p*/ //valor declarado aqui só retorna se for lido como undefined
+//console.log(d, p, desconto)//p nao será retornado
+//console.log(descricao, preco)
+
+let { detalhes: { fabricante, modelo = 'Não informado' } } = produto
+console.log(fabricante, modelo)
+
+//-------------------------------------------------------------------------------------------
+/**
+ * DESTRUCTURING ASSIGNMENT PARTE 3
+ */
+//array
+
+/*
+let arr = [10, 20, 30, 40]
+
+function teste([a,b, , c, d=100]) {
+    console.log(a, b, c, d)
+}
+
+teste(arr)
+*/
+//objeto
+let obj = {
+    a: 10,
+    b: 20,
+    c: 30,
+    d: 40
+}
+
+function teste({ a: x, d, z = 10 }) {
+    console.log(x, d, z)
+}
+
+teste(obj)
+
+//-------------------------------------------------------------------------------------------
+/**
+ * DESTRUCTURING ASSIGNMENT PARTE 4
+ */
+
+//array
+/*let arr = [10,20,30,40]
+ 
+ let [ a, ...resto ] = arr//'a' fica separado dos outros elementos do array
+ console.log(a)
+ console.log(resto)//resto poderia ter qualquer nome
+ */
+
+let obje = {
+    a: 10, b: 20, c: 30, d: 40
+}
+
+let { aa, ...z } = obje
+//'aa' foi desestruturado e outros atributos foram unificados dentro de um único obj(z)-poderia ter qlqr nome
+//...-rest: pois está juntando valores
+console.log(aa)
+console.log(z)
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel"> 
+        //é um - aql obj é alguma coisa
+        //tem um(quando é o valor de outro obj) - tem um detalhe
+        let produto = {
+            descricao: 'Notebook',
+            preco: 1800,
+            detalhes: {
+                fabricante: 'abc',
+                modelo: 'xyz'
+            }//composição
+        }
+
+        /* token
+        array => []
+        objeto => {}
+        */
+        //let { descricao, preco } = produto
+
+        /*let {descricao: d, preco: p = 1000, desconto = 5} = produto/*desestruturando descricao e preco de dentro do produto, para serem 
+        usadas como d e p*/ //valor declarado aqui só retorna se for lido como undefined
+        //console.log(d, p, desconto)//p nao será retornado
+        //console.log(descricao, preco)
+
+        let { detalhes: {fabricante, modelo = 'Não informado'} } = produto
+        console.log(fabricante, modelo)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

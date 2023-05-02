@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        //destructuring - operador de desestruturação - tira valores de dentro de uma estrutura(array ou objeto)
+        //contexto de array      
+        let frutas = ['Abacaxi', 'Uva', 'Pera', 'Mamão']
+
+        /*let a = frutas[0]
+        let b = frutas[0]
+        let c = frutas[0]*/
+
+        let [ a, b, , c, d, e = 'Banana'] = frutas //no momento da desestruturação estão sendo declaradas variáveis novas
+        //lugar vazio indica que não queremos pular tal índice
+        //quando índice não existe, é recuperado um valor undefined
+        //caso não queira recuperar valor undefined, é só declarar no momento da desestruturação um valor para tal item
+        //console.log(a, b, c, d, e)
+         
+        let coisas = [['Abacaxi', 'Uva', 'Pera','Mamão'], ['José', 'Maria']]
+        let [,[,n2]] = coisas
+
+        console.log(n2)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

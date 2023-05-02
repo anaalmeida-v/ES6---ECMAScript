@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pr-bt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+
+        //array
+        /*let arr = [10,20,30,40]
+ 
+         let [ a, ...resto ] = arr//'a' fica separado dos outros elementos do array
+         console.log(a)
+         console.log(resto)//resto poderia ter qualquer nome
+         */
+
+        let obj = {
+            a: 10, b: 20, c: 30, d: 40
+        }
+
+        let { a, ...z } = obj
+        //'a' foi desestruturado e outros atributos foram unificados dentro de um único obj(z)-poderia ter qlqr nome
+        //...-rest: pois está juntando valores
+        console.log(a)
+        console.log(z)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
