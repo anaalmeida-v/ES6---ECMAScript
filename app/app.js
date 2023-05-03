@@ -7,31 +7,40 @@ class Despesa {
         this.descricao = descricao
         this.valor = valor
     }
+
+    validarDados() {
+        for (let i in this) {
+            if (this[i] == undefined || this[i] == '' || this[i] == null) {
+                return false
+            }
+        }
+        return true
+    }
 }
 
 class Bd {
 
-	constructor() {
-		let id = localStorage.getItem('id')
+    constructor() {
+        let id = localStorage.getItem('id')
 
-		if(id === null) {
-			localStorage.setItem('id', 0)
-		}
-	}
+        if (id === null) {
+            localStorage.setItem('id', 0)
+        }
+    }
 
-	getProximoId() {
-		let proximoId = localStorage.getItem('id')//getItem() - recuperar um dado dentro de localStorage
+    getProximoId() {
+        let proximoId = localStorage.getItem('id')//getItem() - recuperar um dado dentro de localStorage
         return parseInt(proximoId) + 1
-	}
+    }
 
-	gravar(d) {
+    gravar(d) {
         //localStorage.setItem('despesa', JSON.stringify(d))
         let id = this.getProximoId()
 
-		localStorage.setItem(id, JSON.stringify(d))
+        localStorage.setItem(id, JSON.stringify(d))
 
-		localStorage.setItem('id', id)
-	}
+        localStorage.setItem('id', id)
+    }
 }
 
 let bd = new Bd()
@@ -54,12 +63,16 @@ function cadastrarDespesa() {
         descricao.value,
         valor.value
     )
-    
-    bd.gravar(despesa)
 
+    if (despesa.validarDados()) {
+        bd.gravar(despesa)
+        //dialog de sucesso
+        $('#sucessoGravacao').modal('show')
+    } else {
+        //dialog de erro
+        $('#erroGravacao').modal('show')
+    }
 }
-
-
 /*function gravar(d) {//transformando objeto literal em JSON
     localStorage.setItem('despesa', JSON.stringify(d))/*setItem()retorna 2 parâmetros, um nome e um valor
         quando passado 'chave' e 'valor', irá adicionar esta chave ao storage, ou atualizar o valor caso a chave já
