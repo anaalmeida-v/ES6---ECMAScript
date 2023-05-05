@@ -59,8 +59,8 @@ class Bd {
             //nestes casos nós vamos pular esses índices
             if (despesa === null) {
                 continue
-            }
-
+            } 
+            despesa.id = i//atributo novo dentro dos objetos de despesas retornado pelo método recuperarTodosRegistros()
             despesas.push(despesa)
         }
 
@@ -104,6 +104,9 @@ class Bd {
         }
 
         return despesasFiltradas
+    }
+    remover(id) {
+        localStorage.removeItem()
     }
 }
 
@@ -181,7 +184,7 @@ apresentadas no tbody da tabela não destão sendo passada*/
     dados do novo elemento, os outros elementos reaparecem*/
 
     //percorrer o array despesas, listando cada despesa de forma dinâmica
-    despesas.forEach(() => {
+    despesas.forEach((d) => {
 
         //criando a linha(tr)
         let linha = listaDespesas.insertRow()//cria linhas 
@@ -207,6 +210,25 @@ apresentadas no tbody da tabela não destão sendo passada*/
         linha.insertCell(1).innerHTML = d.tipo
         linha.insertCell(2).innerHTML = d.descricao
         linha.insertCell(3).innerHTML = d.valor
+
+        //criar o botão de exclusão
+        let btn = document.createElement("button")//criando elemento botão
+        btn.className = 'btn btn-danger'
+        btn.innerHTML = <i class='fas fa-times'></i>
+        btn.id = `id_despesa_ ${d.id}`//passando a informação do id para os botões
+        btn.onclick = () => {
+            //remover a despesa
+            this.id
+
+            let id = this.id.replace('id_despesa_','')
+
+            //alert (id)
+            bd.remover(this.id)
+            window.location.reload()
+        }
+        linha.insertCell(4).append(btn)//inserindo uma 4°coluna na linha
+        //append - inclusão do elemento dentro da coluna baseada na linha
+
         console.log(d)
     })
 }
